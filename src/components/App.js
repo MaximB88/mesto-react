@@ -41,7 +41,7 @@ function App() {
     }
     
     return (
-        <body className="page">
+        <>
             <Header />
             <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleAvatarClick} onCardClick={handleCardClick}/>
             <Footer />
@@ -49,7 +49,7 @@ function App() {
             <PopupAddPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
             <PopupChangeAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
             <ImagePopup data={selectedCard !== null && selectedCard} onClose={closeAllPopups} />  
-        </body>
+        </>
   );
 }
 
