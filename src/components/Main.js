@@ -5,26 +5,6 @@ import api from "../utils/api";
 
 function Main(props) {
     const currentUser = React.useContext(CurrentUserContext);
-    const [cards, setCards] = React.useState([]);
-
-    React.useEffect(() => {
-        Promise.all([api.getCards()])
-            .then(([data]) => {
-                setCards(data)
-            })
-            .catch(err => console.log(`Ошибка: ${err}`))
-    }, []);
-
-    function handleCardLike(data) {
-        const isLiked = data.likes.some(i => i._id === currentUser._id);
-        api.changeLikeCount(data._id, !isLiked).then((newCard) => {
-            setCards((state) => state.map((c) => c._id === data._id ? newCard : c));
-        });
-    }
-
-    function handleCardDelete(data) {
-        api.deleteCard(data._id);
-    }
 
     return(
         <main className="main">
@@ -45,13 +25,13 @@ function Main(props) {
                 <button type="button" className="button profile__add-button" onClick={props.onAddPlace}></button>
             </section>
             <section className="photo">
-                {cards.map((data) => (
+                {props.cards.map((data) => (
                     <Card 
                         data={data} 
                         key={data._id} 
                         onCardClick={props.onCardClick}
-                        onCardLike={handleCardLike}
-                        onCardDelete={handleCardDelete} />
+                        onCardLike={props.onCardLike}
+                        onCardDelete={props.onCardDelete} />
                 ))}
             </section>
       </main>
