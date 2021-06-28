@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function PopupAddPlace(props) {
+function AddPlacePopup(props) {
     const [name, setName] = React.useState();
     const [link, setLink] = React.useState();
 
@@ -31,4 +31,4 @@ function PopupAddPlace(props) {
     )
 }
 
-export default PopupAddPlace;
+export default AddPlacePopup;

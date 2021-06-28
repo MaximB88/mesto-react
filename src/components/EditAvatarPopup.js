@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function PopupChangeAvatar(props) {
+function EditAvatarPopup(props) {
     const avatarRef = React.useRef('');
 
     function handleSubmit(e) {
@@ -19,4 +19,4 @@ function PopupChangeAvatar(props) {
     )
 }
 
-export default PopupChangeAvatar;
+export default EditAvatarPopup;
