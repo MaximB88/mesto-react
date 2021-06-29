@@ -58,6 +58,7 @@ function App() {
                 setCurrentUser(userData);
                 closeAllPopups();
             })
+            .catch(err => console.log(`Ошибка: ${err}`))
     }
 
     function hanadleUpdateAvatar(data) {
@@ -71,9 +72,11 @@ function App() {
 
     function handleCardLike(data) {
         const isLiked = data.likes.some(i => i._id === currentUser._id);
-        api.changeLikeCount(data._id, !isLiked).then((newCard) => {
-            setCards((state) => state.map((c) => c._id === data._id ? newCard : c));
-        });
+        api.changeLikeCount(data._id, !isLiked)
+            .then((newCard) => {
+                setCards((state) => state.map((c) => c._id === data._id ? newCard : c));
+            })
+            .catch(err => console.log(`Ошибка: ${err}`));
     }
 
     function handleCardDelete(data) {
